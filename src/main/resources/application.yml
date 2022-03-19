@@ -1,5 +1,10 @@
 server:
   port: 8087
+  
+  
+#  servlet:
+#    context-path: /surebank/api
+  
   error:
     include-message: always
     include-binding-errors: always
@@ -23,7 +28,14 @@ logging:
   pattern:
     file: "%d %-5level [%thread] %logger:%msg%n"
     
-  level:
-    '[com.bank.sure]': INFO
+
+  surebank:
+     app:
+  jwtSecret:  surebank@@12
+  jwtExpirationMs: 86400000
+ 
+    
+#  level:
+#    '[com.bank.sure]': INFO
     
     
