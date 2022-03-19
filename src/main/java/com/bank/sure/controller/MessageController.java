@@ -8,6 +8,8 @@ import java.util.stream.Collectors;
 import javax.validation.Valid;
 
 import org.modelmapper.ModelMapper;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -35,6 +37,16 @@ public class MessageController {
 	
 	@Autowired
 	private ModelMapper modelMapper;
+	
+//	public MessageController(MessageService messageService, ModelMapper modelMapper) {
+//		this.messageService=messageService;
+//		this.modelMapper=modelMapper;
+//	}
+	
+	
+	
+	
+	private static Logger logger= LoggerFactory.getLogger(MessageController.class);
 	
 	private Message convertTo(MessageDTO messageDTO) {
 		Message message=modelMapper.map(messageDTO, Message.class);
@@ -96,6 +108,8 @@ public class MessageController {
 	}
 	@DeleteMapping("/{id}")
 	public ResponseEntity<Response> deleteMessage(@PathVariable Long id){
+		
+		logger.info("Client want to delete message id : {}", id);
 		messageService.deleteMessage(id);
 		Response response =new Response();
 		response.setMessage("Message deleted succesfully");

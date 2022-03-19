@@ -21,6 +21,9 @@ logging:
   file:
     name: log/surebank.log
   pattern:
-    file: "%d %-5level [%thread] %logger:%msg/n"
+    file: "%d %-5level [%thread] %logger:%msg%n"
+    
+  level:
+    '[com.bank.sure]': INFO
     
     
