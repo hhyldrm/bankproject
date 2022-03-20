@@ -9,7 +9,6 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Table;
 
-
 import com.bank.sure.domain.enumeration.UserRole;
 
 import lombok.AllArgsConstructor;
@@ -23,16 +22,16 @@ import lombok.Setter;
 @NoArgsConstructor
 
 
-
+@Table(name="tbl_role")
 @Entity
-@Table(name = "tbl_role")
 public class Role {
+
 	@Id
-	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	@GeneratedValue(strategy=GenerationType.IDENTITY)
 	private Integer id;
 	
 	@Enumerated(EnumType.STRING)
-	@Column(length = 30, nullable = false)
+	@Column(length=30,nullable=false)
 	private UserRole name;
 
 	@Override
@@ -41,5 +40,5 @@ public class Role {
 	}
 	
 	
-
 }
+

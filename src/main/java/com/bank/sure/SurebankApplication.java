@@ -1,13 +1,11 @@
 package com.bank.sure;
 
 import org.modelmapper.ModelMapper;
-import org.modelmapper.convention.NamingConventions;
 import org.modelmapper.config.Configuration.AccessLevel;
+import org.modelmapper.convention.NamingConventions;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.annotation.Bean;
-
-
 
 @SpringBootApplication
 public class SurebankApplication {
@@ -18,7 +16,6 @@ public class SurebankApplication {
 	
 	@Bean
 	public ModelMapper modelMapper() {
-		
 		ModelMapper modelMapper=new ModelMapper();
 		modelMapper.getConfiguration()
 		.setFieldMatchingEnabled(true)
@@ -26,5 +23,6 @@ public class SurebankApplication {
 		.setSourceNamingConvention(NamingConventions.JAVABEANS_MUTATOR);
 		return modelMapper;
 	}
+	
 
 }

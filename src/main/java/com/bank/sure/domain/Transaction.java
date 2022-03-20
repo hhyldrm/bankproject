@@ -13,7 +13,6 @@ import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
 import com.bank.sure.domain.enumeration.TransactionType;
-import com.fasterxml.jackson.annotation.JsonIgnore;
 
 import lombok.AllArgsConstructor;
 import lombok.Getter;
@@ -25,17 +24,17 @@ import lombok.Setter;
 @AllArgsConstructor
 @NoArgsConstructor
 
-@Table(name = "tbl_transaction")
+@Table(name="tbl_transaction")
 @Entity
 public class Transaction {
-	
+
 	@Id
-	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	@GeneratedValue(strategy=GenerationType.IDENTITY)
 	private Long id;
 	
 	private LocalDateTime date;
 	
-	@Column(length = 200, nullable = false)
+	@Column(length=200,nullable=false)
 	private String description;
 	
 	private double amount;
@@ -44,9 +43,11 @@ public class Transaction {
 	
 	private TransactionType type;
 	
+	
 	@ManyToOne
-	@JoinColumn(name = "account_id")
+	@JoinColumn (name="account_id")
 	private Account account;
 	
-
+	
+	
 }

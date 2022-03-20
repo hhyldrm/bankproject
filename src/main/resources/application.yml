@@ -26,13 +26,12 @@ logging:
   file:
     name: log/surebank.log
   pattern:
-    file: "%d %-5level [%thread] %logger:%msg%n"
-    
-
-  surebank:
-     app:
-  jwtSecret:  surebank@@12
-  jwtExpirationMs: 86400000
+   file: "%d %-5level [%thread] %logger:%msg%n"
+   
+surebank: 
+  app:
+    jwtSecret: surebank@@12
+    jwtExpirationMs: 86400000
  
     
 #  level:
