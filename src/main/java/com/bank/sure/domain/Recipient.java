@@ -36,7 +36,7 @@ public class Recipient {
 	
 	
 	@OneToOne
-	@JoinColumn(name="account_id",unique = true)
+	@JoinColumn(name="account_id")
 	private Account account;
 	
 	
