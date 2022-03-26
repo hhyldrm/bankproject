@@ -28,6 +28,8 @@ public class RecipientService {
 				throw new ConflictException(ExceptionMessage.RECIPIENT_ADD_ERROR_MESSAGE);
 			}
 			
+			
+			
 			validateRecipient(recipientRequest,account);
 			
 			Recipient recipient=new Recipient();
@@ -54,7 +56,9 @@ public class RecipientService {
 			if(user.getId().equals(recipient.getUser().getId())) {
 				recipientRepository.deleteById(recipient.getId());
 			}else {
-				throw new ConflictException("You dont have permission to delete recipient");
+				throw new ConflictException(ExceptionMessage.RECIPIENT_DELETE_PERMISSON_MESSAGE);
+			
+	
 			}
 			
 	}

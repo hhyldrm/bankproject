@@ -26,5 +26,9 @@ public class ExceptionMessage {
 	
 	public final static String RECIPIENT_NOT_FOUND_MESSAGE="Recipient with id %d not found";
 	
-	
+	public final static String RECIPIENT_DELETE_PERMISSON_MESSAGE= "You dont have permission  ";
+
+	public final static String RECIPIENT_DUPLICATE_MESSAGE="This recipient has already saved for this user";
+
+	public final static String BALANCE_NOT_AVAILABLE_MESSAGE="Your balance";
 }
