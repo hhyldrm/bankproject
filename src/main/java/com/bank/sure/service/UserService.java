@@ -4,9 +4,12 @@ import java.util.HashSet;
 import java.util.Set;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
+import com.bank.sure.controller.dto.UserDTO;
 import com.bank.sure.controller.request.RegisterRequest;
 import com.bank.sure.controller.request.UserUpdateRequest;
 import com.bank.sure.domain.Role;
@@ -60,7 +63,6 @@ public class UserService {
 		
 		userRoles.add(role);
 		
-		
 		User user=new User(
 				registerRequest.getFirstName(),
 				registerRequest.getLastName(),
@@ -98,6 +100,12 @@ public class UserService {
 			.orElseThrow(()-> new ResourceNotFoundException(String.format(ExceptionMessage.USERID_NOT_FOUND_MESSAGE, id)));
 	}
 	
+	public Page<UserDTO> getUsers(Pageable pageable){
+		return userRepository.findUsersPage(pageable);
+	}
+	
+	
+	
 	public void updateUser(Long id, UserUpdateRequest request) {
 		boolean emailExist=userRepository.existsByEmail(request.getEmail());
 		User foundUser=findById(id);
@@ -129,7 +137,6 @@ public class UserService {
 		
 	}
 	
-	//it is used to convert all string roles into the Role type
 	private Set<Role> addRoles(Set<String> userRoles){
 		Set<Role> roles=new HashSet<>();
 		
@@ -166,6 +173,8 @@ public class UserService {
 		return roles;
 		
 	}
+	
+	
 	
 	
 	

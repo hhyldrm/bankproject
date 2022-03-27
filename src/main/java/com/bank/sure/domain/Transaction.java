@@ -47,7 +47,15 @@ public class Transaction {
 	@ManyToOne
 	@JoinColumn (name="account_id")
 	private Account account;
-	
-	
-	
+
+
+	public Transaction(LocalDateTime date, String description, double amount, BigDecimal availableBalance,
+			TransactionType type, Account account) {
+		this.date = date;
+		this.description = description;
+		this.amount = amount;
+		this.availableBalance = availableBalance;
+		this.type = type;
+		this.account = account;
+	}
 }

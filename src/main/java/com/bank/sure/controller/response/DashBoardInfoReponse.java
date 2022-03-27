@@ -1,6 +1,5 @@
 package com.bank.sure.controller.response;
 
-
 import java.util.List;
 
 import com.bank.sure.controller.dto.AccountDTO;
@@ -11,12 +10,12 @@ import lombok.Data;
 
 @Data
 @AllArgsConstructor
-public class DashBoardInfoResponse {
+public class DashBoardInfoReponse {
 	List<TransactionDTO> list;
 	double totalDeposit;
-	double totalWithDraw;
+	double totalWithdraw;
 	double totalTransfer;
 	
-	AccountDTO accountDTO;
+	AccountDTO account;
 
 }

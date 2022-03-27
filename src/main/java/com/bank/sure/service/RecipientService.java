@@ -1,5 +1,7 @@
 package com.bank.sure.service;
 
+import java.util.Optional;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -29,6 +31,19 @@ public class RecipientService {
 			}
 			
 			
+//			Boolean isExist = recipientRepository.existsByUserAndAccount(user, account);
+//			
+//			if(isExist) {
+//				throw new ConflictException(ExceptionMessage.RECIPIENT_DUPLICATE_MESSAGE);
+//			}
+			
+			
+			Optional<Recipient> foundRecipient = recipientRepository.findRecipientByUserAndAccountId(user.getId(), account.getId());
+			
+			if(foundRecipient.isPresent()) {
+				throw new ConflictException(ExceptionMessage.RECIPIENT_DUPLICATE_MESSAGE);
+			}
+			
 			
 			validateRecipient(recipientRequest,account);
 			
@@ -57,8 +72,6 @@ public class RecipientService {
 				recipientRepository.deleteById(recipient.getId());
 			}else {
 				throw new ConflictException(ExceptionMessage.RECIPIENT_DELETE_PERMISSON_MESSAGE);
-			
-	
 			}
 			
 	}
